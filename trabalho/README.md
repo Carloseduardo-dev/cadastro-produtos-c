@@ -28,3 +28,7 @@ O programa cria ou atualiza `produtos.txt` no diretório de execução. O arquiv
 - `Cadastro_de_Produtos.pdf`: código e evidências da execução.
 - `evidencias/`: imagens PNG dos testes do menu e do arquivo criado.
 - [`trabalho_programacao_software_basico_c.pdf`](../trabalho_programacao_software_basico_c.pdf): enunciado da atividade.
+
+## Demonstração web
+
+A interface para navegador fica em [`demo/`](demo/). Ela usa os módulos C compilados para WebAssembly e mantém os dados somente na memória da sessão. Consulte [`demo/README.md`](demo/README.md) para compilar e configurar a publicação estática na Vercel.

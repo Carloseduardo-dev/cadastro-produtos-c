@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173f37">
+  <meta name="description" content="Demonstração de cadastro e consulta de produtos em C com WebAssembly.">
+  <title>Produtos | Estoque</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Catálogo de produtos">
+      <span class="brand-mark" aria-hidden="true">CP</span>
+      <span class="brand-copy"><strong>CATÁLOGO</strong><small>LOJA DE INFORMÁTICA</small></span>
+    </a>
+    <span class="session-label"><span class="session-dot" aria-hidden="true"></span>DEMO · SESSÃO TEMPORÁRIA</span>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">ESTOQUE <span>/</span> PRODUTOS</p>
+        <h1 id="page-title">Catálogo</h1>
+      </div>
+      <div class="summary" aria-live="polite">
+        <div class="summary-item"><span>ITENS</span><strong id="summary-count">0</strong></div>
+        <div class="summary-rule" aria-hidden="true"></div>
+        <div class="summary-item summary-total"><span>VALOR EM ESTOQUE</span><strong id="summary-total">R$ 0,00</strong></div>
+      </div>
+    </section>
+
+    <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
+
+    <section class="workspace" aria-label="Gerenciamento de produtos">
+      <aside class="controls">
+        <form id="add-form" class="form-section">
+          <div class="section-heading">
+            <span class="section-index">01</span>
+            <h2>Novo produto</h2>
+          </div>
+          <div class="field-grid">
+            <label class="field">
+              <span>Código</span>
+              <input name="codigo" type="number" min="1" step="1" required>
+            </label>
+            <label class="field">
+              <span>Quantidade</span>
+              <input name="quantidade" type="number" min="0" step="1" value="0" required>
+            </label>
+            <label class="field field-wide">
+              <span>Nome</span>
+              <input name="nome" type="text" maxlength="79" autocomplete="off" required>
+            </label>
+            <label class="field field-wide">
+              <span>Categoria</span>
+              <input name="categoria" type="text" maxlength="49" autocomplete="off" required>
+            </label>
+            <label class="field field-wide">
+              <span>Preço unitário</span>
+              <span class="money-input"><span>R$</span><input name="preco" type="number" min="0" step="0.01" required></span>
+            </label>
+          </div>
+          <button class="button button-primary" type="submit">Adicionar produto</button>
+        </form>
+
+        <form id="search-form" class="form-section compact-section">
+          <div class="section-heading">
+            <span class="section-index section-index-coral">02</span>
+            <h2>Buscar produto</h2>
+          </div>
+          <label class="field">
+            <span>Código do produto</span>
+            <input name="codigo" type="number" min="1" step="1" required>
+          </label>
+          <button class="button button-secondary" type="submit">Buscar</button>
+        </form>
+
+        <form id="update-form" class="form-section compact-section">
+          <div class="section-heading">
+            <span class="section-index section-index-yellow">03</span>
+            <h2>Atualizar estoque</h2>
+          </div>
+          <div class="field-grid">
+            <label class="field">
+              <span>Código</span>
+              <input name="codigo" type="number" min="1" step="1" required>
+            </label>
+            <label class="field">
+              <span>Nova quantidade</span>
+              <input name="quantidade" type="number" min="0" step="1" required>
+            </label>
+          </div>
+          <button class="button button-secondary" type="submit">Salvar quantidade</button>
+        </form>
+      </aside>
+
+      <section class="catalogue" aria-labelledby="catalogue-title">
+        <div class="catalogue-heading">
+          <div>
+            <p class="eyebrow">INVENTÁRIO</p>
+            <h2 id="catalogue-title">Produtos cadastrados</h2>
+          </div>
+          <span id="catalogue-count" class="count-label">0 produtos</span>
+        </div>
+        <div class="table-frame">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">CÓDIGO</th>
+                <th scope="col">PRODUTO</th>
+                <th scope="col">CATEGORIA</th>
+                <th scope="col" class="numeric-cell">QUANTIDADE</th>
+                <th scope="col" class="numeric-cell">PREÇO UNITÁRIO</th>
+                <th scope="col"><span class="visually-hidden">Ações</span></th>
+              </tr>
+            </thead>
+            <tbody id="product-rows"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state">
+            <span class="empty-mark" aria-hidden="true">0</span>
+            <strong>Nenhum produto nesta sessão</strong>
+          </div>
+        </div>
+        <p class="session-note"><span class="session-dot" aria-hidden="true"></span> Os dados existem apenas enquanto esta página estiver aberta.</p>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
