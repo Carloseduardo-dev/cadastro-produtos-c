@@ -2,6 +2,13 @@
 
 Interface estática para testar no navegador o mesmo módulo C de persistência do projeto. O C é compilado para WebAssembly com Emscripten; `produtos.txt` fica apenas no sistema de arquivos em memória da instância WebAssembly e desaparece ao recarregar a página.
 
+## Organização
+
+- `app.js`: inicialização e conexão entre os componentes.
+- `services/product-service.js`: chamadas JavaScript para a API C/WebAssembly.
+- `components/`: lista, resumo do estoque, mensagens e formulários de cadastro, busca e atualização.
+- `wasm/`: módulos compilados para o navegador.
+
 ## Build local
 
 Instale o [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html) e, nesta pasta, execute no PowerShell:
