@@ -3,22 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#173f37">
+  <meta name="theme-color" content="#008080">
   <meta name="description" content="Demonstração de cadastro e consulta de produtos em C com WebAssembly.">
   <title>Produtos | Estoque</title>
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="Catálogo de produtos">
-      <span class="brand-mark" aria-hidden="true">CP</span>
-      <span class="brand-copy"><strong>CATÁLOGO</strong><small>LOJA DE INFORMÁTICA</small></span>
-    </a>
-    <span class="session-label"><span class="session-dot" aria-hidden="true"></span>DEMO · SESSÃO TEMPORÁRIA</span>
-  </header>
+  <main class="app-window" aria-label="Aplicativo de controle de produtos">
+    <header class="titlebar">
+      <span class="title-icon" aria-hidden="true">CP</span>
+      <span class="window-title">Controle de produtos - Loja de informática</span>
+      <div class="window-controls" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
+    </header>
+    <nav class="menubar" aria-label="Navegação do aplicativo">
+      <a href="#add-form">Cadastro</a>
+      <a href="#search-form">Busca</a>
+      <a href="#catalogue-title">Estoque</a>
+      <span class="menubar-note">Aplicação C · WebAssembly</span>
+    </nav>
 
-  <main class="page-shell">
+    <div class="page-shell">
     <section class="page-heading" aria-labelledby="page-title">
       <div>
         <p class="eyebrow">ESTOQUE <span>/</span> PRODUTOS</p>
@@ -126,6 +131,11 @@
         <p class="session-note"><span class="session-dot" aria-hidden="true"></span> Os dados existem apenas enquanto esta página estiver aberta.</p>
       </section>
     </section>
+    </div>
+    <footer class="statusbar">
+      <span><i class="status-led" aria-hidden="true"></i>Pronto</span>
+      <span class="statusbar-right">DADOS MANTIDOS NESTA SESSÃO</span>
+    </footer>
   </main>
 </body>
 </html>
