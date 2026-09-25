@@ -11,10 +11,10 @@ Programa acadêmico desenvolvido em C para armazenar e consultar produtos de uma
 
 ## Compilação e execução
 
-Com Clang instalado, abra o terminal nesta pasta e execute:
+Com Clang instalado, abra o terminal nesta pasta e compile os módulos:
 
 ```powershell
-clang produtos.c -o produtos.exe
+clang src\main.c src\menu.c src\entrada.c src\arquivo_produtos.c -I include -o produtos.exe
 .\produtos.exe
 ```
 
@@ -22,7 +22,8 @@ O programa cria ou atualiza `produtos.txt` no diretório de execução. O arquiv
 
 ## Arquivos
 
-- `produtos.c`: código-fonte.
+- `include/`: definição do produto e contratos entre módulos.
+- `src/`: inicialização, interface/menus, entrada de dados e persistência em arquivo.
 - `produtos.txt`: arquivo de dados de exemplo usado pelo programa.
 - `Cadastro_de_Produtos.pdf`: código e evidências da execução.
 - `evidencias/`: imagens PNG dos testes do menu e do arquivo criado.
