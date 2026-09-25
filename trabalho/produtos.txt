@@ -1,0 +1,2 @@
+1001|Mouse sem fio|Perifericos|4|149.90
+1002|Teclado mecanico|Perifericos|5|25.50
