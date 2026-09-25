@@ -8,6 +8,28 @@ import { createProductService } from "./services/product-service.js";
 
 const statusMessage = createStatusMessage(document.querySelector("#status-message"));
 const actionButtons = document.querySelectorAll(".controls button");
+const viewButtons = document.querySelectorAll(".menubar [data-view]");
+const workspace = document.querySelector(".workspace");
+const catalogue = document.querySelector("#product-catalogue");
+const viewForms = {
+  add: document.querySelector("#add-form"),
+  search: document.querySelector("#search-form"),
+  stock: document.querySelector("#update-form"),
+};
+
+viewButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedView = button.dataset.view;
+    workspace.dataset.view = selectedView;
+    catalogue.hidden = selectedView !== "stock";
+    Object.entries(viewForms).forEach(([view, form]) => {
+      form.hidden = view !== selectedView;
+    });
+    viewButtons.forEach((viewButton) => {
+      viewButton.setAttribute("aria-pressed", String(viewButton === button));
+    });
+  });
+});
 
 actionButtons.forEach((button) => { button.disabled = true; });
 

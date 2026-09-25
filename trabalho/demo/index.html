@@ -17,9 +17,9 @@
       <div class="window-controls" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
     </header>
     <nav class="menubar" aria-label="Navegação do aplicativo">
-      <a href="#add-form">Cadastro</a>
-      <a href="#search-form">Busca</a>
-      <a href="#catalogue-title">Estoque</a>
+      <button type="button" data-view="add" aria-controls="product-controls" aria-pressed="false">Cadastro</button>
+      <button type="button" data-view="search" aria-controls="product-controls" aria-pressed="false">Busca</button>
+      <button type="button" data-view="stock" aria-controls="product-controls product-catalogue" aria-pressed="true">Estoque</button>
       <span class="menubar-note">Aplicação C · WebAssembly</span>
     </nav>
 
@@ -27,7 +27,7 @@
     <section class="page-heading" aria-labelledby="page-title">
       <div>
         <p class="eyebrow">ESTOQUE <span>/</span> PRODUTOS</p>
-        <h1 id="page-title">Catálogo</h1>
+        <h1 id="page-title">Controle de produtos</h1>
       </div>
       <div class="summary" aria-live="polite">
         <div class="summary-item"><span>ITENS</span><strong id="summary-count">0</strong></div>
@@ -38,9 +38,9 @@
 
     <div id="status-message" class="status-message" role="status" aria-live="polite"></div>
 
-    <section class="workspace" aria-label="Gerenciamento de produtos">
-      <aside class="controls">
-        <form id="add-form" class="form-section">
+    <section class="workspace" data-view="stock" aria-label="Gerenciamento de produtos">
+      <aside id="product-controls" class="controls">
+        <form id="add-form" class="form-section" hidden>
           <div class="section-heading">
             <span class="section-index">01</span>
             <h2>Novo produto</h2>
@@ -70,7 +70,7 @@
           <button class="button button-primary" type="submit">Adicionar produto</button>
         </form>
 
-        <form id="search-form" class="form-section compact-section">
+        <form id="search-form" class="form-section compact-section" hidden>
           <div class="section-heading">
             <span class="section-index section-index-coral">02</span>
             <h2>Buscar produto</h2>
@@ -101,7 +101,7 @@
         </form>
       </aside>
 
-      <section class="catalogue" aria-labelledby="catalogue-title">
+      <section id="product-catalogue" class="catalogue" aria-labelledby="catalogue-title">
         <div class="catalogue-heading">
           <div>
             <p class="eyebrow">INVENTÁRIO</p>

@@ -54,10 +54,14 @@ body { background: #008080; color: #111; font-size: 12px; }
 .window-controls { display: flex; gap: 3px; margin-left: auto; }
 .window-controls span { width: 20px; height: 19px; display: grid; place-items: center; border: 2px solid; border-color: #fff #404040 #404040 #fff; background: #c0c0c0; color: #111; font-family: Arial, sans-serif; font-size: 12px; line-height: 1; }
 .menubar { min-height: 29px; display: flex; align-items: center; gap: 2px; padding: 2px 5px; border-bottom: 1px solid #808080; }
-.menubar a { padding: 4px 8px; color: #111; text-decoration: none; }
-.menubar a:hover, .menubar a:focus-visible { outline: 1px dotted #111; background: #000080; color: #fff; }
+.menubar button { padding: 4px 8px; border: 1px solid transparent; background: transparent; color: #111; font: inherit; cursor: pointer; }
+.menubar button:hover, .menubar button:focus-visible, .menubar button[aria-pressed="true"] { outline: 1px dotted #111; background: #000080; color: #fff; }
 .menubar-note { margin-left: auto; padding-right: 5px; color: #444; font-size: 10px; }
 .page-shell { width: 100%; padding: 19px 18px 14px; }
+.workspace [hidden] { display: none !important; }
+.workspace[data-view="add"], .workspace[data-view="search"] { grid-template-columns: minmax(0, 460px); justify-content: center; }
+.workspace[data-view="add"] .form-section, .workspace[data-view="search"] .form-section, .workspace[data-view="stock"] .form-section { margin: 0; padding: 0; border: 0; }
+.workspace[data-view="add"] .controls, .workspace[data-view="search"] .controls { width: 100%; }
 .page-heading { align-items: center; padding: 2px 2px 14px; border-bottom: 2px groove #fff; }
 .eyebrow { margin-bottom: 5px; color: #444; font-size: 10px; font-weight: 700; }
 .eyebrow span { color: #800000; }
@@ -70,7 +74,7 @@ h1 { font-size: 23px; font-weight: 700; }
 .status-message { min-height: 28px; margin-top: 8px; padding: 6px 8px; border: 1px inset #fff; background: #d4d0c8; color: #000080; font-size: 12px; }
 .status-message:empty { visibility: hidden; }
 .status-message[data-kind="error"] { color: #800000; }
-.workspace { grid-template-columns: minmax(250px, 300px) minmax(0, 1fr); gap: 18px; padding-top: 8px; }
+.workspace { display: grid; grid-template-columns: minmax(250px, 300px) minmax(0, 1fr); align-items: start; gap: 18px; padding-top: 8px; }
 .controls { padding: 13px; border: 2px groove #fff; border-radius: 0; background: #c0c0c0; box-shadow: none; }
 .form-section + .form-section { margin-top: 15px; padding-top: 13px; border-top: 1px solid #808080; }
 .section-heading { gap: 7px; margin-bottom: 11px; }
